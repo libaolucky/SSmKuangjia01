@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+>
+    <!--第一种赋值-->
+    <bean id="student" class="spring10Zuoye01.Student">
+        <property name="name" value="耶啵子"></property>
+        <property name="age" value="25"></property>
+        <property name="friendName">
+            <list>
+                <value>臭娇儿</value>
+                <value>世纪仔</value>
+                <value>黑子</value>
+            </list>
+        </property>
+        <property name="clazz">
+            <set>
+                <value>大数据2班</value>
+                <value>云计算1班</value>
+                <value>软件技术5班</value>
+                <value>计算机应用</value>
+            </set>
+        </property>
+        <property name="score">
+            <map>
+                <entry key="java" value="99"></entry>
+                <entry key="vue" value="64"></entry>
+                <entry key="jquery" value="88"></entry>
+            </map>
+        </property>
+        <property name="Dbla">
+            <props>
+                <prop key="name">熊大</prop>
+                <prop key="pass">1236789</prop>
+            </props>
+        </property>
+    </bean>
+    <!--读取properties-->
+    <util:properties id="Dbla" location="classpath:spring10Zuoye01/Dbla.properties">
+    </util:properties>
+
+    <!--取值 读取-->
+    <!--使用spring 的el表达式  读取 bean 的属性值-->
+    <bean id="studentEl" class="spring10Zuoye01.StudentEL">
+        <property name="name" value="#{student.name}"></property>
+        <property name="age" value="#{student.age}"></property>
+        <property name="friendName" value="#{student.friendName[1]}"></property>
+        <property name="clazz" value="#{student.clazz[1]}"></property>
+       <property name="score" value="#{student.score.jquery}"></property>
+       <!--<property name="score" value="#{student.score['jquery']}"></property>-->
+        <!--<property name="Dbla" value="#{Dbla['username']}"></property>-->
+        <property name="Dbla" value="#{Dbla.username}"></property>
+    </bean>
+
+
+
+
+</beans>

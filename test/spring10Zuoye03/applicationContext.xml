@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+>
+    <bean id="cpu" class="spring10Zuoye03.Cpu"> </bean>
+    <!--通过下标的构造参数方法 注入-->
+    <!--<bean id="keyboard" class="spring10Zuoye03.Keyboard">-->
+        <!--<constructor-arg index="0" ref="cpu"></constructor-arg>-->
+    <!--</bean>-->
+    <!--自动注入-->
+    <bean id="keyboard" class="spring10Zuoye03.Keyboard" autowire="byName"></bean>
+
+</beans>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+>
+  <!--第二种赋值-->
+  <util:list id="friendNameList">
+    <value>为此</value>
+    <value>忘了</value>
+    <value>哇哦</value>
+  </util:list>
+
+  <util:set id="clazzSet">
+    <value>耶啵</value>
+    <value>杨洋</value>
+    <value>峰峰</value>
+    <value>白鹿</value>
+  </util:set>
+
+  <util:map id="scoreMap">
+    <entry key="java" value="89"></entry>
+    <entry key="jquery" value="99"></entry>
+  </util:map>
+
+  <util:properties id="dbProp">
+    <prop key="pwd">1235</prop>
+  </util:properties>
+
+  <bean id="student2" class="spring10Zuoye02.Student2">
+       <property name="name" value="热巴"></property>
+       <property name="age" value="22"></property>
+       <property name="friendName" ref="friendNameList"></property>
+       <property name="clazz" ref="clazzSet"></property>
+       <property name="score" ref="scoreMap"></property>
+       <property name="Dbla" ref="dbProp"></property>
+  </bean>
+
+</beans>
