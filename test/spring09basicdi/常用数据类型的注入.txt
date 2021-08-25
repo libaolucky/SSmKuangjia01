@@ -1,0 +1,7 @@
+1. String ,2.int
+3.集合  list,set,Map,properties
+
+注入方式1：
+    xml 方式注入
+
+    Spring 的 el表达式 #{}

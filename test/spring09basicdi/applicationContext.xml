@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+>
+<bean id="teacher" class="spring09basicdi.Teacher">
+    <property name="name" value="欣欣"></property>
+    <property name="age" value="99"></property>
+    <property name="friendName">
+        <list>
+            <value>臭娇儿</value>
+            <value>世纪仔</value>
+            <value>虹猫</value>
+            <value>数据量</value>
+        </list>
+    </property>
+    <property name="loveName">
+        <set>
+            <value>世纪仔</value>
+            <value>啦啦啦</value>
+            <value>螺丝刀</value>
+            <value>白白兔</value>
+            <value>土土土</value>
+        </set>
+    </property>
+    <property name="score">
+        <map>
+            <entry key="java" value="99"></entry>
+            <entry key="vue" value="89"></entry>
+            <entry key="jquery" value="88"></entry>
+        </map>
+    </property>
+    <property name="db">
+        <props>
+            <prop key="name">白字</prop>
+            <prop key="pass">1236789</prop>
+        </props>
+    </property>
+</bean>
+    <!--读取properties-->
+    <util:properties id="db" location="classpath:spring09basicdi/db.properties">
+    </util:properties>
+
+    <!--取值 读取-->
+    <!--使用spring 的el表达式  读取 bean 的属性值-->
+    <bean id="teacherEL" class="spring09basicdi.TeacherEL">
+        <property name="name" value="#{teacher.name}"></property>
+        <property name="age" value="#{teacher.age}"></property>
+        <property name="loveName" value="#{teacher.loveName[2]}"></property>
+        <property name="friendName" value="#{teacher.friendName[2]}"></property>
+        <!--<property name="score" value="#{teacher.score['jquery']}"></property>-->
+        <property name="score" value="#{teacher.score.jquery}"></property>
+        <!--<property name="db" value="#{db['username']}"></property>-->
+        <property name="db" value="#{db.username}"></property>
+    </bean>
+
+</beans>
