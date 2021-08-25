@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+>
+    <!--byName,byType的区别-->
+    <!--byType:与执行属性类型相同的bean，自动状态根据 class来注入的，如果有computer1，computer2，computer3 就报错了-->
+    <!--@autowire 默认是byType
+     byName 通过id="computer" 来注入的 （推荐）
+    -->
+
+    <bean id="gameInterface" class="spring08autowire.Computer"> </bean>
+    <!--<bean id="computer1" class="spring08autowire.Computer"> </bean>-->
+    <bean id="student" class="spring08autowire.Student" autowire="byName">
+    </bean>
+
+</beans>
