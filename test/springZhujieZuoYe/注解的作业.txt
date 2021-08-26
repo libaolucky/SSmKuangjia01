@@ -1,0 +1,2 @@
+作业:   使用注解 写出 student 的 controller 和  service 以及 stdentDAO 之间 增删改查
+作业2 : 使用注解 读取  一个 数据的properteis 配置
