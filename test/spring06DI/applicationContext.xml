@@ -19,5 +19,4 @@
         <!--<property name="psp" ref="psp"></property>-->
         <property name="playGame" ref="phone"></property>
     </bean>
-
 </beans>

@@ -5,17 +5,23 @@ package spring02ouhe;
 // HR问：  spring 框架中，使用到了那些设计模式！！  单例和工厂模式
 public class FactoryBean {
     public static Usb getInstance(String beanName){
-        Usb usb=null;
-        if(beanName.equals("MyTv")){
-            usb=new MyTv();
-        }else if(beanName.equals("Computer")){
-            usb=new Computer();
-        }else if(beanName.equals("Mp4")){
-            usb=new Mp4();
-        } else if(beanName.equals("Mp3")){
-            usb=new Mp4();
-        }else if(beanName.equals("Mp100")){
-            usb=new Mp4();
+       Usb usb=null;
+//        if(beanName.equals("MyTv")){
+//            usb=new MyTv();
+//        }else if(beanName.equals("Computer")){
+//            usb=new Computer();
+//        }else if(beanName.equals("Mp4")){
+//            usb=new Mp4();
+//        } else if(beanName.equals("Mp3")){
+//            usb=new Mp4();
+//        }else if(beanName.equals("Mp100")){
+//            usb=new Mp4();
+//        }
+        try {
+           Class<?> aClass = Class.forName(beanName);
+           usb= (Usb) aClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return usb;
         // 结论： 大量的new对象 是造成 耦合的关键， 那么久需要 一个框架 来解决 new 对象的耦合

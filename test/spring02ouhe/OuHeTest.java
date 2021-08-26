@@ -30,11 +30,11 @@ public class OuHeTest {
 //        u.usbData();
         //以上  第二种写法 更优美了 ，更加解耦了，让用户输入 字符串 ，比打开源码
 
-        Usb usb=Menthod02OuheTest.getInstance("spring02ouhe.MyTv");
+        Usb usb=FactoryBean.getInstance("spring02ouhe.MyTv");  //Spring 的底层 也是工厂模式
         usb.usbData();
-        Usb usb1=Menthod02OuheTest.getInstance("spring02ouhe.Mp4");
+        Usb usb1=FactoryBean.getInstance("spring02ouhe.Mp4");
         usb1.usbData();
-        Usb usb2=Menthod02OuheTest.getInstance("spring02ouhe.Computer");
+        Usb usb2=FactoryBean.getInstance("spring02ouhe.Computer");
         usb2.usbData();
 
 

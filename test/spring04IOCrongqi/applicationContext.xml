@@ -19,4 +19,4 @@
     <!--<bean id="pc" class="spring04IOCrongqi.Pc" scope="prototype"></bean>-->
     <!-- 测试对象的生命周期 需要 单例模式-->
     <bean id="pc" class="spring04IOCrongqi.Pc" scope="prototype" init-method="initShow" destroy-method="destroyObj"></bean>
-</beans>
+        </beans>
