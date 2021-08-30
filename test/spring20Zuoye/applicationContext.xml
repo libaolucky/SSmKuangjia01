@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+>
+   <!--面向切面， 次要业务的对象-->
+    <bean id="messageAspect" class="spring20Zuoye.MessageAspect"></bean>
+    <!--主要业务，目标对象-->
+    <bean id="videoService" class="spring20Zuoye.VideoServiceImpl"></bean>
+
+    <!--目的是：把切面对象 植入到目标对象中去-->
+    <aop:config>
+        <!--切入点:  主要业务中接口的方法-->
+        <aop:pointcut id="msgPc" expression="execution(* spring20Zuoye.*.*(..))"/>
+        <!--组装切面-->
+        <aop:aspect id="msgAspect" ref="messageAspect">
+            <!--前置通知 === 播放-->
+            <!--<aop:before method="sendMsg" pointcut-ref="msgPc"/>-->
+
+            <!--后置通知 === 暂停-->
+            <!--<aop:after-returning method="sendMsg1" pointcut-ref="msgPc"/>-->
+
+            <!--环绕通知 === 转金币-->
+            <!--<aop:around method="roundMsg" pointcut-ref="msgPc"/>-->
+
+            <!--异常通知和 最终通知 === 视频丢失了 -->
+            <aop:after-throwing method="sendMsgError" pointcut-ref="msgPc" throwing="e"></aop:after-throwing>
+            <aop:after method="finalMsg" pointcut-ref="msgPc"/>
+
+        </aop:aspect>
+
+    </aop:config>
+
+
+</beans>
+
